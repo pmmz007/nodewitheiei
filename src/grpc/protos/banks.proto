@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpc.nodejs.cil.banks";
+option java_outer_classname = "BanksProto";
+option objc_class_prefix = "BANKS";
+
+package banks;
+
+service Banks {
+  rpc getBank (GetBankRequest) returns (GetBankReply) {}
+  rpc getAllBanks (GetAllBankRequest) returns (GetAllBankReply) {}
+  rpc createBank (CreateBankRequest) returns (CreateBankReply) {}
+  rpc updateBank (UpdateBankRequest) returns (UpdateBankReply) {}
+  rpc deleteBank (DeleteBankRequest) returns (DeleteBankReply) {}
+}
+
+message GetBankRequest {
+  string id = 1;
+}
+
+message GetBankReply {
+  string id = 1;
+  string name = 2;
+}
+
+message GetAllBankRequest {}
+
+message GetAllBankReply {
+  repeated GetBankReply listBank = 1;
+}
+
+message CreateBankRequest {
+  string name = 1;
+}
+
+message CreateBankReply {
+  string id = 1;
+}
+
+message UpdateBankRequest {
+  string id = 1;
+  string name = 2;
+}
+
+message UpdateBankReply {
+  string message = 1;
+}
+
+message DeleteBankRequest {
+  string id = 1;
+}
+
+message DeleteBankReply {
+  string message = 1;
+}

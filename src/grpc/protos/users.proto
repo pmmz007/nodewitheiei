@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpc.nodejs.cil.users";
+option java_outer_classname = "UsersProto";
+option objc_class_prefix = "USERS";
+
+package users;
+
+service Users {
+  rpc getUser (GetUserRequest) returns (GetUserReply) {}
+  rpc getAllUsers (GetAllUserRequest) returns (GetAllUserReply) {}
+  rpc createUser (CreateUserRequest) returns (CreateUserReply) {}
+  rpc updateUser (UpdateUserRequest) returns (UpdateUserReply) {}
+  rpc deleteUser (DeleteUserRequest) returns (DeleteUserReply) {}
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserReply {
+  string id = 1;
+  string name = 2;
+  string bankId = 3;
+  string amount = 4;
+}
+
+message GetAllUserRequest {}
+
+message GetAllUserReply {
+  repeated GetUserReply listUser = 1;
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string bankId = 2;
+  string amount = 3;
+}
+
+message CreateUserReply {
+  string id = 1;
+}
+
+message UpdateUserRequest {
+  string id = 1;
+  string name = 2;
+  string bankId = 3;
+  string amount = 4;
+}
+
+message UpdateUserReply {
+  string message = 1;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message DeleteUserReply {
+  string message = 1;
+}
